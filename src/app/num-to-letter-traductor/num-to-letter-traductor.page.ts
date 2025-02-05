@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormsModule,ReactiveFormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonButtons, IonTitle, IonToolbar, IonMenuButton, IonInput, IonItem , IonList , IonLabel,IonButton  } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonButtons, IonTitle, IonToolbar, IonMenuButton, IonInput, IonItem , IonList , IonLabel,IonButton,IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle   } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-num-to-letter-traductor',
   templateUrl: './num-to-letter-traductor.page.html',
   styleUrls: ['./num-to-letter-traductor.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonButtons, IonTitle, IonMenuButton, IonToolbar, CommonModule, FormsModule, IonInput, IonItem , IonList , IonLabel,IonButton,ReactiveFormsModule ]
+  imports: [IonContent, IonHeader, IonButtons, IonTitle, IonMenuButton, IonToolbar, CommonModule, FormsModule, IonInput, IonItem , IonList , IonLabel,IonButton,ReactiveFormsModule,IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle  ]
 })
 export class NumToLetterTraductorPage implements OnInit {
 
@@ -52,7 +52,7 @@ export class NumToLetterTraductorPage implements OnInit {
     return this.Result = "one thousand"; // Handles only up to 1000
   }
 
-  restard(){
+  restart(){
     this.Result = "";
     this.Num.setValue("");
     this.numberToUse = 0;

@@ -1,38 +1,48 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Calculate</ion-title>
+    <ion-title>Calculator</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Calculate</ion-title>
+      <ion-title size="large">Calculator</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-list>
-    <ion-item>
-      <ion-input
-        [formControl]="Num1"
-        type="number"
-        label="Number 1"
-      ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input
-        [formControl]="Num2"
-        type="number"
-        label="Number 2"
-      ></ion-input>
-    </ion-item>
-  </ion-list>
-  <ion-button (click)="sum()">Sum</ion-button>
-  <ion-button (click)="restart()">Restart</ion-button>
-  <ion-item>
-    <ion-label>Result: {{Result}}</ion-label>
-  </ion-item>
+  <ion-card class="calc-card">
+    <ion-card-header>
+      <ion-card-title>Enter Numbers</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Number 1</ion-label>
+          <ion-input type="number" [formControl]="Num1"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Number 2</ion-label>
+          <ion-input type="number" [formControl]="Num2"></ion-input>
+        </ion-item>
+      </ion-list>
+
+      <div class="button-group">
+        <ion-button expand="full" (click)="sum()" color="success">
+          Sum
+        </ion-button>
+        <ion-button expand="full" (click)="restart()" color="danger">
+          Restart
+        </ion-button>
+      </div>
+
+      <ion-item class="result-item" *ngIf="Result !== null">
+        <ion-label>Result: <strong>{{ Result }}</strong></ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

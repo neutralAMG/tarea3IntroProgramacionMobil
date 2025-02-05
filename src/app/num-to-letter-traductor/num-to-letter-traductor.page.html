@@ -1,30 +1,48 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>NumToLetterTraductor</ion-title>
+    <ion-title>Number to Words</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">NumToLetterTraductor</ion-title>
+      <ion-title size="large">Number to Words</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-list>
-    <ion-item>
-      <ion-input
-        [formControl]="Num"
-        type="number"
-        min="0"
-        max="1000"
-        label="Number to traduce: "
-      ></ion-input>
-    </ion-item>
-  </ion-list>
-  <ion-button (click)="getNumLetters()">Generate</ion-button>
-  <ion-button (click)="restard()">Restart</ion-button>
-  <ion-label>Result: {{Result}}</ion-label>
+
+  <ion-card class="translator-card">
+    <ion-card-header>
+      <ion-card-title>Enter a Number</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Number (0 - 1000)</ion-label>
+        <ion-input
+          type="number"
+          [formControl]="Num"
+          min="0"
+          max="1000"
+          placeholder="Enter a number"
+        ></ion-input>
+      </ion-item>
+
+      <div class="button-group">
+        <ion-button expand="full" (click)="getNumLetters()" color="success">
+          Convert
+        </ion-button>
+        <ion-button expand="full" (click)="restart()" color="danger">
+          Restart
+        </ion-button>
+      </div>
+
+      <ion-item class="result-item" *ngIf="Result !== null">
+        <ion-label>Result: <strong>{{ Result }}</strong></ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

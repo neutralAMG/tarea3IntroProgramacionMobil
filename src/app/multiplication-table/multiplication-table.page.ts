@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, FormControl,ReactiveFormsModule  } from '@angular/forms';
-import { IonContent, IonHeader, IonButtons, IonTitle, IonToolbar, IonMenuButton, IonInput, IonItem , IonList , IonLabel,IonButton , IonCol, IonGrid, IonRow } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonButtons, IonTitle, IonToolbar, IonMenuButton, IonInput, IonItem , IonList , IonLabel,IonButton , IonCol, IonGrid, IonRow,IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-multiplication-table',
   templateUrl: './multiplication-table.page.html',
   styleUrls: ['./multiplication-table.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonButtons, IonTitle, IonMenuButton, IonToolbar, CommonModule, FormsModule, IonInput, IonItem, IonList , IonLabel ,IonButton,ReactiveFormsModule, IonCol, IonGrid, IonRow ]
+  imports: [IonContent, IonHeader, IonButtons, IonTitle, IonMenuButton, IonToolbar, CommonModule, FormsModule, IonInput, IonItem, IonList , IonLabel ,IonButton,ReactiveFormsModule, IonCol, IonGrid, IonRow,IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle ]
 })
 export class MultiplicationTablePage implements OnInit {
 
@@ -20,7 +20,7 @@ export class MultiplicationTablePage implements OnInit {
   }
 
   generateTable(){
- this.Result = this.Result.filter(n => n = -1)
+    this.Result = [];
     for(let i = 1; i<=13; i++){
       this.Result.unshift()
       this.Result.push(Number(this.Num.value) * i)

@@ -1,32 +1,55 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>MultiplicationTable</ion-title>
+    <ion-title>Multiplication Table</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">MultiplicationTable</ion-title>
+      <ion-title size="large">Multiplication Table</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-list>
-    <ion-item>
-      <ion-input
-        type="number"
-        [formControl]="Num"
-        label="Number to generate table: "
-      ></ion-input>
-    </ion-item>
-  </ion-list>
-  <ion-button (click)="generateTable()">Generate</ion-button>
-  <ion-button (click)="restart()">Restart</ion-button>
-  <ion-grid>
-    <ion-row *ngFor="let num of Result; let i = index">
-      <ion-col>{{i + 1}}: {{ num }}</ion-col>
-    </ion-row>
-  </ion-grid>
+
+  <ion-card class="table-card">
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Number to generate table:</ion-label>
+          <ion-input
+            type="number"
+            (ngModelChange)="generateTable()"
+            [formControl]="Num"
+          ></ion-input>
+        </ion-item>
+      </ion-list>
+
+      <div class="button-group">
+        <ion-button expand="full" (click)="generateTable()" color="success">
+          Generate
+        </ion-button>
+        <ion-button expand="full" (click)="restart()" color="danger">
+          Restart
+        </ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="Result.length > 0" class="result-card">
+    <ion-card-header>
+      <ion-card-title class="result-title">Multiplication Table</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row *ngFor="let num of Result; let i = index">
+          <ion-col class="result-item"
+            >{{ i+ 1 }} × {{ Num.value }} = {{ num }}</ion-col
+          >
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
