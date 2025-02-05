@@ -1,0 +1,7 @@
+{
+  "name": "tarea3IntroProgramacionMobil",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
