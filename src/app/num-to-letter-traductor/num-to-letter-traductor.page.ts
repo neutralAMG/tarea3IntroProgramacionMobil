@@ -32,24 +32,35 @@ export class NumToLetterTraductorPage implements OnInit {
     const word = this.numWords(this.numberToUse); // Convert number to words
     this.letterCount = word.replace(/[\s-]/g, '').length; // Remove spaces & hyphens
   }
-
+  words: string[] = [
+    "Cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve",
+    "diez", "once", "doce", "trece", "catorce", "quince", "dieciséis",
+    "diecisiete", "dieciocho", "diecinueve"
+  ];
+  
+  tens: string[] = [
+    "", "", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa"
+  ];
+  hundreds: string[] = [
+    "", "cien", "doscientos", "trescientos", "cuatrocientos", "quinientos", 
+    "seiscientos", "setecientos", "ochocientos", "novecientos"
+  ];
   numWords(n: number): string {
-    const words: string[] = [
-      "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
-      "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen",
-      "seventeen", "eighteen", "nineteen"
-    ];
-    
-    const tens: string[] = [
-      "", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"
-    ];
-    
-    if (n < 20) return this.Result = words[n];
-    if (n < 100) return this.Result =  tens[Math.floor(n / 10)] + (n % 10 !== 0 ? "-" + words[n % 10] : "");
-    if (n < 1000)
-      return this.Result = words[Math.floor(n / 100)] + " hundred" + (n % 100 !== 0 ? " and " + this.numWords(n % 100) : "");
-    
-    return this.Result = "one thousand"; // Handles only up to 1000
+
+    if (n < 20) 
+      return this.Result = this.words[n];
+
+    if (n < 100) 
+      return this.Result =  this.tens[Math.floor(n / 10)] + (n % 10 !== 0 ? " y " + this.words[n % 10] : "");
+
+    if (n < 1000){
+      if(n < 200 && n > 100)  return this.Result =  this.hundreds[Math.floor(n / 100)] + "to " + (n % 100 !== 0 ? this.numWords(n % 100) : "");
+      return this.Result =  this.hundreds[Math.floor(n / 100)] + " " + (n % 100 !== 0 ? this.numWords(n % 100) : "");
+    }
+    if(n === 1000)
+      return this.Result = "mil";
+
+    return this.Result = "El numero esta por encima de mil";
   }
 
   restart(){

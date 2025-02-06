@@ -25,6 +25,7 @@
         <ion-input
           type="number"
           [formControl]="Num"
+          (ngModelChange)="getNumLetters()"
           min="0"
           max="1000"
           placeholder="Enter a number"
@@ -32,9 +33,6 @@
       </ion-item>
 
       <div class="button-group">
-        <ion-button expand="full" (click)="getNumLetters()" color="success">
-          Convert
-        </ion-button>
         <ion-button expand="full" (click)="restart()" color="danger">
           Restart
         </ion-button>

@@ -17,12 +17,12 @@ export class MultiplicationTablePage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.generateTable()
   }
 
   generateTable(){
     this.Result = [];
     for(let i = 1; i<=13; i++){
-      this.Result.unshift()
       this.Result.push(Number(this.Num.value) * i)
     }
   }
